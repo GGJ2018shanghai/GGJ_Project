@@ -47,25 +47,57 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
     {
         return loseTime < 1f ? loseTime : 1f;
     }
+    private Vector2 dashDirection;
+    private float dashTime = 0;
+    private bool dashGO = false;
+    private float DashSpeed()
+    {
+        return dashTime < 1f ? dashTime : 1f;
+    }
+
+    public static bool _OnCollisionEnter2D = false;
     private void Update()
     {
-        float xMove = 0, yMove = 0;
-        if (Input.GetKey(KeyCode.W))
+        player.transform.localScale = new Vector2(Data.size, Data.size);
+
+        if (_OnCollisionEnter2D)
         {
-            yMove += Data.speed;
+            dashGO = false;
+            _OnCollisionEnter2D = false;
         }
-        if (Input.GetKey(KeyCode.A))
+
+        //这里是我们Charge类型的移动方式
+        if (!dashGO && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            xMove -= Data.speed;
+            Vector2 playerPosition2D = new Vector2(player.transform.position.x, player.transform.position.y);
+            Vector2 mousePosition2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            mousePosition2D = Camera.main.ScreenToWorldPoint(mousePosition2D);
+            dashDirection = ((mousePosition2D - playerPosition2D)).normalized * Data.speed;
+            dashTime = 0.5f;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (!dashGO && Input.GetKey(KeyCode.Mouse0))
         {
-            yMove -= Data.speed;
+            dashTime += Time.deltaTime;
+            if (dashTime > 2f) dashTime = 2f;
         }
-        if (Input.GetKey(KeyCode.D))
+
+        //抬起按键之后
+        if(Input.GetKeyUp(KeyCode.Mouse0))
         {
-            xMove += Data.speed;
+            dashGO = true;
         }
+        if(dashGO)
+        {
+            player.transform.Translate(dashDirection * Time.deltaTime);
+            dashTime -= Time.deltaTime;
+            if(dashTime < 0f)
+            {
+                dashGO = false;
+            }
+        }
+
+        //接下来是我们初始的移动方式
+        return;
         if (Input.GetKey(KeyCode.Mouse0))
         {
             Vector2 playerPosition2D = new Vector2(player.transform.position.x, player.transform.position.y);

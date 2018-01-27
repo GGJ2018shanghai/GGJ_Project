@@ -26,7 +26,7 @@ public class AIController : MonoBehaviour {
     }
 
     public void Move() {
-        Debug.Log("move");
+        //Debug.Log("move");
 
         //couter.FindPath(player.transform, player.transform.position);
         counter.FindPath(transform, player.transform.position);
