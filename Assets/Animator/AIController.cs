@@ -30,7 +30,7 @@ public class AIController : MonoBehaviour {
 
         //couter.FindPath(player.transform, player.transform.position);
         counter.FindPath(transform, player.transform.position);
-        //counter.FindPath(transform, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+    
     }
 
     public void Attack() {
