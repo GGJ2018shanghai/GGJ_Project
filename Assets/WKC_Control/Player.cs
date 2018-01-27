@@ -31,4 +31,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("OnCollisionStay2D");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        GameLogicManager.Instance.ApplyHPModify(collision.GetComponent<MonsterDesc>());
+    }
 }

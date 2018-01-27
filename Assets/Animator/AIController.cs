@@ -32,7 +32,6 @@ public class AIController : MonoBehaviour {
             // up and down
             AIType = 3;
         }
-        AIType = 3;
 
         //初始化一个默认状态机
         fsm.ChangeState(new MoveState());
@@ -43,7 +42,7 @@ public class AIController : MonoBehaviour {
         if (AIType == 1) {
             LogicOne();
         } else if (AIType == 2) {
-
+            LogicTwo();
         } else if (AIType == 3) {
             LogicThree();
         }
@@ -54,6 +53,11 @@ public class AIController : MonoBehaviour {
             transform.DOLocalRotate(new Vector3(0, 0, rotateAng), rotateAng / 360 * 2);
 
         }
+    }
+
+
+    void LogicTwo() {
+
     }
 
     void LogicThree() {

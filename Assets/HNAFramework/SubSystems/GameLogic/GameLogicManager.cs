@@ -16,6 +16,7 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
 
     public void ApplyHPModify(MonsterDesc desc)
     {
+        //
         Data.hp += desc.HpModify;
     }
 
