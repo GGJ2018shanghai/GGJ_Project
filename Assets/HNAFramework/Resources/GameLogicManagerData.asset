@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 79
   speed: 10
-  size: 5
+  size: 3
