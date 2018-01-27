@@ -9,6 +9,9 @@ public class FSM : MonoBehaviour {
     public bool isCanMove;
     public bool isDie;
 
+    public float JumpSpeed;
+    public float JumpCD;
+
     public float _CoolCD;
     public float _ChaseCD;
 
@@ -20,7 +23,13 @@ public class FSM : MonoBehaviour {
     void Start () {
         CoolCD = 2.0f;
         ChaseCD = 1.0f;
-    
+
+        JumpCD = 3.0f;
+        JumpSpeed = 1.0f;
+    }
+
+    public void UpdateJumpCD() {
+        JumpCD -= Time.deltaTime;
     }
 
     public void ChangeState(IState newState) {
@@ -28,7 +37,7 @@ public class FSM : MonoBehaviour {
         MessageDispatcher.SendMessage(this, "gcore", "state_" + newState, 0);
     }
 
-    public void InitCD() {
+    public void InitCoolAndChaseCD() {
         CoolCD = _CoolCD;
         ChaseCD = _ChaseCD;
     }

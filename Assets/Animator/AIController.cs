@@ -42,21 +42,34 @@ public class AIController : MonoBehaviour {
         if (AIType == 1) {
             LogicOne();
         } else if (AIType == 2) {
-            LogicTwo();
+            //LogicTwo();
         } else if (AIType == 3) {
             LogicThree();
         }
 
-
-        if (Random.value >= 0.7) {
-            float rotateAng = Random.Range(0, 360);
-            transform.DOLocalRotate(new Vector3(0, 0, rotateAng), rotateAng / 360 * 2);
-
-        }
     }
 
 
     void LogicTwo() {
+
+
+        if (Random.value >= 0.5) {
+            float rotateAng = Random.Range(0, 360);
+            transform.DOLocalRotate(new Vector3(0, 0, rotateAng), rotateAng / 360 * 2);
+        }
+
+        fsm.UpdateJumpCD();
+        Debug.LogError(transform.position);
+        if (fsm.JumpCD <= 0) {
+            Debug.LogError("Emmmm");
+            GetComponent<DG.Tweening.DOTweenAnimation>().endValueV3 = new Vector3(fsm.JumpSpeed*50, 0f);
+            GetComponent<DG.Tweening.DOTweenAnimation>().isRelative = true;
+            GetComponent<DG.Tweening.DOTweenAnimation>().DOPlayForward();
+            GetComponent<DG.Tweening.DOTweenAnimation>().DOKill();
+            fsm.JumpCD = 3.0f;
+
+        }
+
 
     }
 
@@ -72,7 +85,8 @@ public class AIController : MonoBehaviour {
             fsm.UpdateChaseCD();
             if (fsm.IsChaseCDLessThanZero()) { 
                 fsm.isCanMove = false;
-                fsm.InitCD();
+
+                fsm.InitCoolAndChaseCD();
                 fsm.ChangeState(new IdleState());
             }
         } else {
@@ -80,7 +94,7 @@ public class AIController : MonoBehaviour {
             fsm.UpdateCoolCD();
             if (fsm.IsCoolCDLessThanZero()) {
                 fsm.isCanMove = true;
-                fsm.InitCD();
+                fsm.InitCoolAndChaseCD();
                 fsm.ChangeState(new MoveState());
             }
         }
