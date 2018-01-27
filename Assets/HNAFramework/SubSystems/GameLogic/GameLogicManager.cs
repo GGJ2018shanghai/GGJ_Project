@@ -14,10 +14,9 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
         player = GameObject.Find("Player");
     }
 
-    public void ApplyHPModify(MonsterDesc desc)
+    public void Encounter(MonsterDesc desc)
     {
-        //
-        Data.hp += desc.HpModify;
+        
     }
 
     // 速度Buff：外部函数直接调用函数GameLogicManager.Instance.ApplySpeedBuffer() 来执行具体的修改函数
@@ -64,8 +63,8 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
     public static bool _OnCollisionEnter2D = false;
     private void Update()
     {
-        player.transform.localScale = new Vector2(Data.size, Data.size);
-
+        //player.transform.localScale = new Vector2(Data.size, Data.size);
+        
         if (_OnCollisionEnter2D)
         {
             dashGO = false;
@@ -79,12 +78,12 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
             Vector2 mousePosition2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             mousePosition2D = Camera.main.ScreenToWorldPoint(mousePosition2D);
             dashDirection = ((mousePosition2D - playerPosition2D)).normalized * Data.speed;
-            dashTime = 0.5f;
+            dashTime = Data.botDashTime;
         }
         if (!dashGO && Input.GetKey(KeyCode.Mouse0))
         {
             dashTime += Time.deltaTime;
-            if (dashTime > 2f) dashTime = 2f;
+            if (dashTime > Data.topDashTime) dashTime = Data.topDashTime;
         }
 
         //抬起按键之后
