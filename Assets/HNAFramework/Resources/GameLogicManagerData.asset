@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: GameLogicManagerData
   m_EditorClassIdentifier: 
   hp: 79
-  speed: 50
+  speed: 10
   size: 5
