@@ -34,7 +34,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
+        collision.GetComponent<MonsterDesc>().GetKilled();
         GameLogicManager.Instance.Encounter(collision.GetComponent<MonsterDesc>());
+        Destroy(collision.gameObject);
     }
 }
