@@ -14,7 +14,10 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
         player = GameObject.Find("Player");
     }
 
-    public void ApplyHPModify(mon)
+    public void ApplyHPModify(MonsterDesc desc)
+    {
+        Data.hp += desc.HpModify;
+    }
 
     // 速度Buff：外部函数直接调用函数GameLogicManager.Instance.ApplySpeedBuffer() 来执行具体的修改函数
     public void ApplySpeedBuffer(float buffValue, float bufferTime)
