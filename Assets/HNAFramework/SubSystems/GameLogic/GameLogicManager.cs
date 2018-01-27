@@ -14,10 +14,7 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
         player = GameObject.Find("Player");
     }
 
-    //-------------------------------------------------------------------------------------------
-    //我们还可以继续设置与数据变更相关的接口
-    //-------------------------------------------------------------------------------------------
-
+    public void ApplyHPModify(mon)
 
     // 速度Buff：外部函数直接调用函数GameLogicManager.Instance.ApplySpeedBuffer() 来执行具体的修改函数
     public void ApplySpeedBuffer(float buffValue, float bufferTime)
@@ -78,12 +75,12 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
             Vector2 mousePosition2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             mousePosition2D = Camera.main.ScreenToWorldPoint(mousePosition2D);
             dashDirection = ((mousePosition2D - playerPosition2D)).normalized * Data.speed;
-            dashTime = Data.botDashTime;
+            dashTime = 0.5f;
         }
         if (!dashGO && Input.GetKey(KeyCode.Mouse0))
         {
             dashTime += Time.deltaTime;
-            if (dashTime > Data.topDashTime) dashTime = Data.topDashTime;
+            if (dashTime > 2f) dashTime = 2f;
         }
 
         //抬起按键之后
@@ -101,7 +98,7 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
             }
         }
 
-        //接下来是我们初始的移动方式，现在已经被略过
+        //接下来是我们初始的移动方式
         return;
         if (Input.GetKey(KeyCode.Mouse0))
         {
