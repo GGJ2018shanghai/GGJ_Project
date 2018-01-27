@@ -6,14 +6,15 @@ using UnityEngine.AI;
 public class AIController : MonoBehaviour {
 
     public FSM fsm;
-    private NavMeshAgent agent;
     public GameObject player;
+    CountPath counter;
+    
 
     void Start () {
         fsm = GetComponent<FSM> ();
         fsm.ac = this;
-        agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
+        counter = GetComponent<CountPath>();
 
 
         //初始化一个默认状态机
@@ -27,8 +28,8 @@ public class AIController : MonoBehaviour {
     public void Move() {
         Debug.Log("move");
 
-        agent.SetDestination(player.transform.position);
-
+        //couter.FindPath(player.transform, player.transform.position);
+        counter.FindPath(transform, Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     public void Attack() {
