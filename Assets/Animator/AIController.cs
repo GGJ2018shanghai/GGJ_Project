@@ -28,12 +28,14 @@ public class AIController : MonoBehaviour {
             if (fsm.IsChaseCDLessThanZero()) { 
                 fsm.isCanMove = false;
                 fsm.InitCD();
+                fsm.ChangeState(new IdleState());
             }
         } else {
             fsm.UpdateCoolCD();
             if (fsm.IsCoolCDLessThanZero()) {
                 fsm.isCanMove = true;
                 fsm.InitCD();
+                fsm.ChangeState(new MoveState());
             }
         }
     }
