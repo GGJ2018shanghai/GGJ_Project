@@ -32,6 +32,7 @@ public class AIController : MonoBehaviour {
             // up and down
             AIType = 3;
         }
+        AIType = 3;
 
         //初始化一个默认状态机
         fsm.ChangeState(new MoveState());
@@ -57,7 +58,7 @@ public class AIController : MonoBehaviour {
 
     void LogicThree() {
         // adjust parameters
-        transform.DOShakePosition(0.5f, 1f, 2, 90f, false, true);
+        transform.DOShakePosition(0.5f, 1f, 5, 90f, false, true);
     }
 
     void LogicOne() {
