@@ -23,6 +23,19 @@ public class AIController : MonoBehaviour {
 
     void Update() {
 
+        if (fsm.isCanMove) {
+            fsm.UpdateChaseCD();
+            if (fsm.IsChaseCDLessThanZero()) { 
+                fsm.isCanMove = false;
+                fsm.InitCD();
+            }
+        } else {
+            fsm.UpdateCoolCD();
+            if (fsm.IsCoolCDLessThanZero()) {
+                fsm.isCanMove = true;
+                fsm.InitCD();
+            }
+        }
     }
 
     public void Move() {

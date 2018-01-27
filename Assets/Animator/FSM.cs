@@ -28,22 +28,32 @@ public class FSM : MonoBehaviour {
         MessageDispatcher.SendMessage(this, "gcore", "state_" + newState, 0);
     }
 
+    public void InitCD() {
+        CoolCD = _CoolCD;
+        ChaseCD = _ChaseCD;
+    }
+
+    public bool IsCoolCDLessThanZero() {
+        if (CoolCD <= 0) return true;
+        return false;
+    }
+
+    public void UpdateChaseCD() {
+        ChaseCD -= Time.deltaTime;
+    }
+
+    public void UpdateCoolCD() {
+        CoolCD -= Time.deltaTime;
+    }
+
+    public bool IsChaseCDLessThanZero() {
+        if (ChaseCD <= 0) return true;
+        return false;
+    }
+
     void Update () {
         if (currentState != null && ac != null) {
             currentState.Execute (ac);
-        }
-        if (isCanMove) {
-            ChaseCD -= Time.deltaTime;
-            if (ChaseCD <= 0) {
-                isCanMove = false;
-                CoolCD = _CoolCD;
-            }
-        } else {
-            CoolCD -= Time.deltaTime;
-            if (CoolCD <= 0) {
-                isCanMove = true;
-                ChaseCD = _ChaseCD;
-            }
         }
     }
 }
