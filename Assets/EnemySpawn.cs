@@ -36,13 +36,17 @@ public class EnemySpawn : MonoBehaviour {
     {
         for (int i = 0; i < 生成数量; i++)
         {
-            Instantiate(monsterPrefabs[怪物ID], FetchPoint(), Quaternion.identity);
+            var obj = Instantiate(monsterPrefabs[怪物ID], FetchPoint(), Quaternion.identity) as GameObject;
+            obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, 0);
         }
     }
     void 生成怪物(int 怪物ID, Vector3 手动指定生成位置, int 生成数量 = 1)
     {
         for (int i = 0; i < 生成数量; i++)
-            Instantiate(monsterPrefabs[怪物ID], 手动指定生成位置, Quaternion.identity);
+        {
+            var obj = Instantiate(monsterPrefabs[怪物ID], 手动指定生成位置, Quaternion.identity) as GameObject;
+            obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, 0);
+        }
     }
     void 设置定时生成怪物(float 间隔时间, int 怪物ID, int 生成数量 = 1)
     {
@@ -56,13 +60,23 @@ public class EnemySpawn : MonoBehaviour {
             生成怪物(id, count);
         }
     }
-
+    public float width;
+    public float height;
     void Init()
     {
-        设置定时生成怪物(2, 0);
-        设置定时生成怪物(2, 1);
-        设置定时生成怪物(2, 3);
-        设置定时生成怪物(2, 4);
-        设置定时生成怪物(2, 5);
+        var min = GameObject.Find("min").transform.position;
+        var max = GameObject.Find("max").transform.position;
+        width = max.x - min.x;
+        height = max.y - min.y;
+
+        //////////////////////////////
+        生成怪物(0);
+        return;
+        生成怪物(0, new Vector3(9,8,0) + min);
+        设置定时生成怪物(200, 0);
+   //     设置定时生成怪物(2, 1);
+   //     设置定时生成怪物(2, 3);
+   //     设置定时生成怪物(2, 4);
+  //      设置定时生成怪物(2, 5);
     }
 }

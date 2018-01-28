@@ -77,23 +77,35 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
             Vector2 playerPosition2D = new Vector2(player.transform.position.x, player.transform.position.y);
             Vector2 mousePosition2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             mousePosition2D = Camera.main.ScreenToWorldPoint(mousePosition2D);
-            dashDirection = ((mousePosition2D - playerPosition2D)).normalized * Data.speed;
+            dashDirection = ((mousePosition2D - playerPosition2D)).normalized * Data.speed ;
             dashTime = Data.botDashTime;
         }
         if (!dashGO && Input.GetKey(KeyCode.Mouse0))
         {
             dashTime += Time.deltaTime;
-            if (dashTime > Data.topDashTime) dashTime = Data.topDashTime;
+            if (dashTime < Data.topDashTime) 
+                dashDirection += dashDirection * Time.deltaTime / Data.botDashTime;
+            //if (dashTime > Data.topDashTime) dashTime = Data.topDashTime;
         }
 
         //抬起按键之后
-        if(Input.GetKeyUp(KeyCode.Mouse0))
+        if(!dashGO && Input.GetKeyUp(KeyCode.Mouse0))
         {
             dashGO = true;
+            dashTime = Data.botDashTime;
         }
         if(dashGO)
         {
-            player.transform.Translate(dashDirection * Time.deltaTime);
+            if(dashTime>= 0.7*Data.botDashTime)
+            {
+                player.transform.Translate(dashDirection * Time.deltaTime);
+            }
+            else if(dashTime>= 0.4 * Data.botDashTime)
+            {
+                player.transform.Translate( dashDirection * Time.deltaTime * dashTime/ Data.topDashTime*0.5f);
+            }
+            
+
             dashTime -= Time.deltaTime;
             if(dashTime < 0f)
             {

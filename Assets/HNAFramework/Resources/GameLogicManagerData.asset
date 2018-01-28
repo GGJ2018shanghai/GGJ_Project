@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: GameLogicManagerData
   m_EditorClassIdentifier: 
   hp: 79
-  speed: 10
   size: 3
+  speed: 5
+  botDashTime: 0.5
+  topDashTime: 0.8

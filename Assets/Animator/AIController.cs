@@ -7,13 +7,24 @@ using DG.Tweening;
 public class AIController : MonoBehaviour {
 
     public FSM fsm;
-    public GameObject player;
+    GameObject player;
     CountPath counter;
     Transform trans;
 
     float MoveSpeed;
     int AIType;
-    
+
+    public enum EAIType
+    {
+        类型1,
+        类型2,
+        类型3
+    }
+    public EAIType eaitype;
+    public float 类型1_寻路移动速度 = 3;
+    public float 类型3_抖动持续时间 = .5f;
+    public float 类型3_抖动伸展度 = 1;
+    public int 类型3_抖动震动强度 = 5;
 
     void Start () {
         fsm = GetComponent<FSM> ();
@@ -21,16 +32,35 @@ public class AIController : MonoBehaviour {
         player = GameObject.Find("Player");
         counter = GetComponent<CountPath>();
 
-        float tmpRandom = Random.value;
-        if (tmpRandom <= 0.3f) {
-            // chase and stop AI
-            AIType = 1;
-        } else if (tmpRandom <= 0.6f) {
-            // random rotation
-            AIType = 2;
-        } else {
-            // up and down
-            AIType = 3;
+        switch (eaitype)
+        {
+            case EAIType.类型1:
+                AIType = 1;
+                break;
+            case EAIType.类型2:
+                AIType = 2;
+                break;
+            case EAIType.类型3:
+                AIType = 3;
+                break;
+            default:
+                float tmpRandom = Random.value;
+                if (tmpRandom <= 0.3f)
+                {
+                    // chase and stop AI
+                    AIType = 1;
+                }
+                else if (tmpRandom <= 0.6f)
+                {
+                    // random rotation
+                    AIType = 2;
+                }
+                else
+                {
+                    // up and down
+                    AIType = 3;
+                }
+                break;
         }
 
         //初始化一个默认状态机
@@ -38,6 +68,8 @@ public class AIController : MonoBehaviour {
     }
 
     void Update() {
+
+        counter.movespeed = 类型1_寻路移动速度;
 
         if (AIType == 1) {
             LogicOne();
@@ -75,7 +107,7 @@ public class AIController : MonoBehaviour {
 
     void LogicThree() {
         // adjust parameters
-        transform.DOShakePosition(0.5f, 1f, 5, 90f, false, true);
+        transform.DOShakePosition(类型3_抖动持续时间, 类型3_抖动伸展度, 类型3_抖动震动强度, 90f, false, true);
     }
 
     void LogicOne() {
@@ -83,7 +115,9 @@ public class AIController : MonoBehaviour {
         if (fsm.isCanMove) {
             // can move
             fsm.UpdateChaseCD();
-            if (fsm.IsChaseCDLessThanZero()) { 
+                counter.movespeed = 类型1_寻路移动速度;
+            if (fsm.IsChaseCDLessThanZero())
+            {
                 fsm.isCanMove = false;
 
                 fsm.InitCoolAndChaseCD();
@@ -91,8 +125,12 @@ public class AIController : MonoBehaviour {
             }
         } else {
             // can't move
+            fsm._CoolCD = 1; 
             fsm.UpdateCoolCD();
+            Debug.Log("eMMM");
             if (fsm.IsCoolCDLessThanZero()) {
+            Debug.Log("eMMMwwww");
+                counter.movespeed = 0;
                 fsm.isCanMove = true;
                 fsm.InitCoolAndChaseCD();
                 fsm.ChangeState(new MoveState());
