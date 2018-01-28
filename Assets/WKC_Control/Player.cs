@@ -32,10 +32,13 @@ public class Player : MonoBehaviour
         Debug.Log("OnCollisionStay2D");
     }
 
-    private void OnCollisionEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.GetComponent<MonsterDesc>().GetKilled();
-        GameLogicManager.Instance.Encounter(collision.GetComponent<MonsterDesc>());
+        if (collision.gameObject.GetComponent<MonsterDesc>() == null) return;
+
+        Debug.Log("OnCollisionEnter2D");
+        collision.gameObject.GetComponent<MonsterDesc>().GetKilled();
+        GameLogicManager.Instance.Encounter(collision.gameObject.GetComponent<MonsterDesc>());
         Destroy(collision.gameObject);
     }
 }
