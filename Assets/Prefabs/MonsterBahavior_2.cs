@@ -30,4 +30,15 @@ public class MonsterBahavior_2 : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         transform.Translate(Vector3.one * 闲晃速度 * Time.deltaTime, Space.Self);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject != GameObject.Find("Player"))
+        {
+            Debug.Log("Emmmmmmmmm");
+            float randomAng = Random.Range(随机旋转角度的上下界.x, 随机旋转角度的上下界.y);
+            transform.DOLocalRotate(new Vector3(0, 0, randomAng), 旋转时间);
+            intervalStartTime = Time.time;
+        }
+    }
 }
