@@ -32,6 +32,7 @@ public class AIController : MonoBehaviour {
         player = GameObject.Find("Player");
         counter = GetComponent<CountPath>();
 
+
         switch (eaitype)
         {
             case EAIType.类型1:
