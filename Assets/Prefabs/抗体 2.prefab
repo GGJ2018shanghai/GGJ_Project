@@ -25,11 +25,10 @@ GameObject:
   - component: {fileID: 114710350463422246}
   - component: {fileID: 114439394277729114}
   - component: {fileID: 114594348817203984}
-  - component: {fileID: 114152375116543894}
-  - component: {fileID: 114123939402880910}
-  - component: {fileID: 114640154990040330}
+  - component: {fileID: 114867588375658666}
+  - component: {fileID: 114645022133378440}
   m_Layer: 0
-  m_Name: "\u5DE8\u566C\u7EC6\u80DE"
+  m_Name: "\u6297\u4F53 2"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,35 +82,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &114123939402880910
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1254683435254992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e70c5786213e69346b90f8bf801d0a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  "\u95F2\u6643\u901F\u5EA6": 0.5
-  "\u4E24\u6B21\u65CB\u8F6C\u95F4\u9694": 3
-  "\u65CB\u8F6C\u65F6\u95F4": 0.1
-  "\u968F\u673A\u65CB\u8F6C\u89D2\u5EA6\u7684\u4E0A\u4E0B\u754C": {x: 0, y: 360}
---- !u!114 &114152375116543894
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1254683435254992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71ee813ca7644ca49a4ef2be63d0a161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: test_monster
-  HpModify: 0
-  ap: 0
 --- !u!114 &114439394277729114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,21 +114,21 @@ MonoBehaviour:
   intervalTime: 0.033
   usePathSmooting: 1
   showPathSmoothing: 0
---- !u!114 &114640154990040330
+--- !u!114 &114645022133378440
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254683435254992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d0258f1436fc24b9bed48b135654b1, type: 3}
+  m_Script: {fileID: 11500000, guid: e70c5786213e69346b90f8bf801d0a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "\u8FFD\u8E2A\u7684\u6301\u7EED\u65F6\u95F4": 0
-  "\u8FFD\u8E2A\u7684cd\u65F6\u95F4": 0
-  "\u8FFD\u8E2A\u901F\u5EA6": 0
-  "\u5148CD": 0
+  "\u95F2\u6643\u901F\u5EA6": 0.4
+  "\u4E24\u6B21\u65CB\u8F6C\u95F4\u9694": 1
+  "\u65CB\u8F6C\u65F6\u95F4": 1
+  "\u968F\u673A\u65CB\u8F6C\u89D2\u5EA6\u7684\u4E0A\u4E0B\u754C": {x: 50, y: 50}
 --- !u!114 &114710350463422246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,6 +148,20 @@ MonoBehaviour:
   _CoolCD: 5
   _ChaseCD: 3
   ac: {fileID: 0}
+--- !u!114 &114867588375658666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1254683435254992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ee813ca7644ca49a4ef2be63d0a161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: test_monster
+  HpModify: 0
+  ap: 0
 --- !u!212 &212198840644921828
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -212,7 +196,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7803f175a760f2145b321bbcad5f1581, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e30640b47236974c8c1bbfff599442e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -70,10 +70,37 @@ public class EnemySpawn : MonoBehaviour {
         height = max.y - min.y;
 
         //////////////////////////////
-        生成怪物(3);
-        return;
-        生成怪物(0, new Vector3(9,8,0) + min);
-        设置定时生成怪物(200, 0);
+   //     生成怪物(5);
+   //     return;
+        生成怪物(0, new Vector3(2,2,0) + min);
+        生成怪物(0, new Vector3(2,4,0) + min);
+        生成怪物(0, new Vector3(2,6,0) + min);
+        生成怪物(0, new Vector3(2,8,0) + min);
+        生成怪物(0, new Vector3(4,2,0) + min);
+        生成怪物(0, new Vector3(4,4,0) + min);
+        生成怪物(0, new Vector3(4,6,0) + min);
+        生成怪物(0, new Vector3(4,8,0) + min);
+        生成怪物(0, new Vector3(6,2,0) + min);
+        生成怪物(0, new Vector3(6,4,0) + min);
+        生成怪物(0, new Vector3(6,6,0) + min);
+        生成怪物(0, new Vector3(6,8,0) + min);
+        生成怪物(0, new Vector3(8,2,0) + min);
+        生成怪物(0, new Vector3(8,4,0) + min);
+        生成怪物(0, new Vector3(8,6,0) + min);
+        生成怪物(0, new Vector3(8,8,0) + min);
+        生成怪物(0, new Vector3(10,2,0) + min);
+        生成怪物(0, new Vector3(10,4,0) + min);
+        生成怪物(0, new Vector3(10,6,0) + min);
+        生成怪物(0, new Vector3(10,8,0) + min);
+
+
+        
+
+
+
+
+
+    //    设置定时生成怪物(200, 0);
    //     设置定时生成怪物(2, 1);
    //     设置定时生成怪物(2, 3);
    //     设置定时生成怪物(2, 4);
