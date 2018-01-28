@@ -82,7 +82,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.45
 --- !u!114 &114079850322765310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,13 +118,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254683435254992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 590a0f86935ba4847b998cf71e00ffda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fsm: {fileID: 114710350463422246}
-  eaitype: 0
+  eaitype: 1
   "\u7C7B\u578B1_\u5BFB\u8DEF\u79FB\u52A8\u901F\u5EA6": 3
   "\u7C7B\u578B3_\u6296\u52A8\u6301\u7EED\u65F6\u95F4": 0.5
   "\u7C7B\u578B3_\u6296\u52A8\u4F38\u5C55\u5EA6": 1
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254683435254992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70c5786213e69346b90f8bf801d0a46, type: 3}
   m_Name: 

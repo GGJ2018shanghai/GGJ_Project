@@ -82,7 +82,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.45
 --- !u!114 &114014770497703974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: test_monster
-  HpModify: 0
+  HpModify: -100
   ap: 0
 --- !u!114 &114439394277729114
 MonoBehaviour:

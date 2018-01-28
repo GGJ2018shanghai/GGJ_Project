@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 740199b071b2b3a409d8fd5726e48bc7
+timeCreated: 1517107445
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MStiffHei PRC
+  fontNames:
+  - MStiffHei PRC
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

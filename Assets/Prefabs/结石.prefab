@@ -82,7 +82,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.45
 --- !u!114 &114014770497703974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: test_monster
-  HpModify: 0
+  HpModify: -100
   ap: 0
 --- !u!114 &114439394277729114
 MonoBehaviour:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fsm: {fileID: 114710350463422246}
-  eaitype: 0
+  eaitype: 1
   "\u7C7B\u578B1_\u5BFB\u8DEF\u79FB\u52A8\u901F\u5EA6": 0.5
   "\u7C7B\u578B3_\u6296\u52A8\u6301\u7EED\u65F6\u95F4": 0.5
   "\u7C7B\u578B3_\u6296\u52A8\u4F38\u5C55\u5EA6": 1
