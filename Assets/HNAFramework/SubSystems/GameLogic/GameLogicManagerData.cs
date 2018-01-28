@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameLogicManagerData : ScriptableObject
 {
     public float hp;
+    public int ap;
     public float size;
 
 

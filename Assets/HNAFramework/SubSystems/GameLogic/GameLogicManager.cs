@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerData> {
 
     // Use this for initialization
+    public static int AP;
+
     GameObject player;
 	new void Awake ()
     {
@@ -16,7 +19,13 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
 
     public void Encounter(MonsterDesc desc)
     {
-        
+        Debug.Log("Data.hp = " + Data.hp);
+        Data.hp += desc.HpModify;
+        if(Data.hp < 0f)
+        {
+            SceneManager.LoadScene("1");
+        }
+        Data.ap += desc.ap;
     }
 
     // 速度Buff：外部函数直接调用函数GameLogicManager.Instance.ApplySpeedBuffer() 来执行具体的修改函数
@@ -63,6 +72,7 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
     public static bool _OnCollisionEnter2D = false;
     private void Update()
     {
+        AP = Data.ap;
         //player.transform.localScale = new Vector2(Data.size, Data.size);
         
         if (_OnCollisionEnter2D)

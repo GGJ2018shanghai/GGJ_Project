@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour {
     public GameObject upgradeBlockPrefab;
 
     //临时使用
-    int money=10000;
+    int money;
     public GameObject moneyText;
 
     // Use this for initialization
@@ -37,7 +37,10 @@ public class UIManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
+        money = GameLogicManager.AP;
+        Debug.Log("！！！ Money = " + money);
         moneyText.GetComponent<Text>().text = ""+money+" !";
 	}
 

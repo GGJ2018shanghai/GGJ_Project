@@ -25,7 +25,7 @@ public class MonsterBahavior_2 : MonoBehaviour {
         {
             float randomAng = Random.Range(随机旋转角度的上下界.x, 随机旋转角度的上下界.y);
             transform.DOLocalRotate(new Vector3(0, 0, transform.rotation.ToEulerAngles().z * Mathf.Rad2Deg + randomAng), 旋转时间);
-            Debug.Log(transform.rotation.ToEulerAngles() * Mathf.Rad2Deg);
+            //Debug.Log(transform.rotation.ToEulerAngles() * Mathf.Rad2Deg);
             intervalStartTime = Time.time;
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
@@ -36,7 +36,7 @@ public class MonsterBahavior_2 : MonoBehaviour {
     {
         if (collision.gameObject != GameObject.Find("Player"))
         {
-            Debug.Log("Emmmmmmmmm");
+            //Debug.Log("Emmmmmmmmm");
             transform.DOLocalRotate(new Vector3(0, 0, transform.rotation.ToEulerAngles().z * Mathf.Rad2Deg + 180), 旋转时间);
             intervalStartTime = Time.time;
         }
