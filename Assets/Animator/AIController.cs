@@ -144,6 +144,7 @@ public class AIController : MonoBehaviour {
                 fsm.isCanMove = true;
                 fsm.InitCoolAndChaseCD();
                 fsm.ChangeState(new MoveState());
+
             }
         }
 
