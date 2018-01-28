@@ -64,7 +64,7 @@ public class AIController : MonoBehaviour {
         }
 
         //初始化一个默认状态机
-        fsm.ChangeState(new MoveState());
+        //fsm.ChangeState(new MoveState());
     }
 
     void Update() {
