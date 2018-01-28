@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
@@ -120,6 +121,8 @@ public class UIManager : MonoBehaviour {
     {
         HideUI(upgradePanel);
         //重新开始游戏
+        SceneManager.LoadScene("Main");
+        GameLogicManager.Instance.Data.hp = 100 + upgradeButton[0].GetComponent<Upgrade>().lv * 20;
     }
 
     public bool CostMoney(int needMoney)

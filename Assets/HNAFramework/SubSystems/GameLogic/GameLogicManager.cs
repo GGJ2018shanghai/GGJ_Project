@@ -23,6 +23,8 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
         Data.hp += desc.HpModify;
         if(Data.hp < 0f)
         {
+            dashTime = 0;
+            dashGO = false;
             SceneManager.LoadScene("1");
         }
         Data.ap += desc.ap;
@@ -98,9 +100,16 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
             //if (dashTime > Data.topDashTime) dashTime = Data.topDashTime;
         }
 
+        if (player == null) {
+            player = GameObject.Find("Player");
+        }
         //抬起按键之后
         if(!dashGO && Input.GetKeyUp(KeyCode.Mouse0))
         {   
+            if (player != null) {
+                player.GetComponent<Animation>().Play();
+            }
+
             Vector2 playerPosition2D = new Vector2(player.transform.position.x, player.transform.position.y);
             Vector2 mousePosition2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             mousePosition2D = Camera.main.ScreenToWorldPoint(mousePosition2D);
@@ -110,6 +119,7 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
         }
         if(dashGO)
         {
+            if (player != null) { 
             if(dashTime>= 0.7*Data.botDashTime)
             {
                 player.transform.Translate(dashDirection * Time.deltaTime);
@@ -118,6 +128,7 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
             {
                 player.transform.Translate( dashDirection * Time.deltaTime * dashTime/ Data.topDashTime*0.5f);
             }
+
             
 
             dashTime -= Time.deltaTime;
@@ -125,6 +136,8 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
             {
                 dashGO = false;
             }
+            }
+            
         }
 
         //接下来是我们初始的移动方式

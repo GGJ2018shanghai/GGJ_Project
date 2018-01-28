@@ -4,11 +4,10 @@ using UnityEngine;
 using DG.Tweening;
 
 public class NewBehaviourScript : MonoBehaviour {
-    public DG.Tweening.DOTweenAnimation test;
-    // Use this for initialization
-    void Start () {
-        transform.DOLocalMoveX(2, 1);
-	}
+    
+    public void LoadScene() {
+        Application.LoadLevel("Main");
+    }
 	
 	// Update is called once per frame
 	void Update () {

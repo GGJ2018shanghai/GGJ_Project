@@ -17,7 +17,7 @@ public class MonsterDesc : MonoBehaviour {
 
     public string name = "test_monster";
     public float HpModify = 0;
-    public float ap = 0;
+    public int ap = 0;
 
     static public void Reset()
     {
