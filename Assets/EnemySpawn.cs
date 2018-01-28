@@ -72,26 +72,26 @@ public class EnemySpawn : MonoBehaviour {
         //////////////////////////////
    //     生成怪物(5);
    //     return;
-        生成怪物(0, new Vector3(2,2,0) + min);
-        生成怪物(0, new Vector3(2,4,0) + min);
-        生成怪物(0, new Vector3(2,6,0) + min);
-        生成怪物(0, new Vector3(2,8,0) + min);
-        生成怪物(0, new Vector3(4,2,0) + min);
-        生成怪物(0, new Vector3(4,4,0) + min);
-        生成怪物(0, new Vector3(4,6,0) + min);
-        生成怪物(0, new Vector3(4,8,0) + min);
-        生成怪物(0, new Vector3(6,2,0) + min);
-        生成怪物(0, new Vector3(6,4,0) + min);
-        生成怪物(0, new Vector3(6,6,0) + min);
-        生成怪物(0, new Vector3(6,8,0) + min);
-        生成怪物(0, new Vector3(8,2,0) + min);
-        生成怪物(0, new Vector3(8,4,0) + min);
-        生成怪物(0, new Vector3(8,6,0) + min);
-        生成怪物(0, new Vector3(8,8,0) + min);
-        生成怪物(0, new Vector3(10,2,0) + min);
-        生成怪物(0, new Vector3(10,4,0) + min);
-        生成怪物(0, new Vector3(10,6,0) + min);
-        生成怪物(0, new Vector3(10,8,0) + min);
+        生成怪物(3, new Vector3(2.5f,2,0) + min);
+        生成怪物(0, new Vector3(2.5f,4,0) + min);
+        生成怪物(1, new Vector3(2.5f,6,0) + min);
+        生成怪物(4, new Vector3(2.5f,8,0) + min);
+        生成怪物(3, new Vector3(4.5f,2,0) + min);
+        生成怪物(5, new Vector3(4.5f,4,0) + min);
+        生成怪物(0, new Vector3(4.5f,6,0) + min);
+        生成怪物(6, new Vector3(4.5f,8,0) + min);
+        生成怪物(4, new Vector3(6.5f,2,0) + min);
+        生成怪物(3, new Vector3(6.5f,4,0) + min);
+        生成怪物(3, new Vector3(6.5f,6,0) + min);
+        生成怪物(4, new Vector3(6.5f,8,0) + min);
+        生成怪物(5, new Vector3(8.5f,2,0) + min);
+        生成怪物(7, new Vector3(8.5f,4,0) + min);
+        生成怪物(2, new Vector3(8.5f,6,0) + min);
+        生成怪物(3, new Vector3(8.5f,8,0) + min);
+        生成怪物(4, new Vector3(10.5f,2,0) + min);
+        生成怪物(1, new Vector3(10.5f,4,0) + min);
+        生成怪物(8, new Vector3(10.5f,6,0) + min);
+        生成怪物(5, new Vector3(10.5f,8,0) + min);
 
 
         

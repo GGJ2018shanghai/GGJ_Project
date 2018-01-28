@@ -74,23 +74,27 @@ public class GameLogicManager : SystemBase<GameLogicManager, GameLogicManagerDat
         //这里是我们Charge类型的移动方式
         if (!dashGO && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Vector2 playerPosition2D = new Vector2(player.transform.position.x, player.transform.position.y);
-            Vector2 mousePosition2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            mousePosition2D = Camera.main.ScreenToWorldPoint(mousePosition2D);
-            dashDirection = ((mousePosition2D - playerPosition2D)).normalized * Data.speed ;
+            //Vector2 playerPosition2D = new Vector2(player.transform.position.x, player.transform.position.y);
+            //Vector2 mousePosition2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            //mousePosition2D = Camera.main.ScreenToWorldPoint(mousePosition2D);
+            //dashDirection = ((mousePosition2D - playerPosition2D)).normalized * Data.speed ;
             dashTime = Data.botDashTime;
         }
         if (!dashGO && Input.GetKey(KeyCode.Mouse0))
         {
             dashTime += Time.deltaTime;
-            if (dashTime < Data.topDashTime) 
-                dashDirection += dashDirection * Time.deltaTime / Data.botDashTime;
+            //if (dashTime < Data.topDashTime) 
+            //    dashDirection += dashDirection * Time.deltaTime / Data.botDashTime;
             //if (dashTime > Data.topDashTime) dashTime = Data.topDashTime;
         }
 
         //抬起按键之后
         if(!dashGO && Input.GetKeyUp(KeyCode.Mouse0))
-        {
+        {   
+            Vector2 playerPosition2D = new Vector2(player.transform.position.x, player.transform.position.y);
+            Vector2 mousePosition2D = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            mousePosition2D = Camera.main.ScreenToWorldPoint(mousePosition2D);
+            dashDirection = ((mousePosition2D - playerPosition2D)).normalized * Data.speed;//* dashTime / Data.botDashTime;
             dashGO = true;
             dashTime = Data.botDashTime;
         }

@@ -74,35 +74,45 @@ public class AIController : MonoBehaviour {
         if (AIType == 1) {
             LogicOne();
         } else if (AIType == 2) {
-            //LogicTwo();
+            LogicTwo();
         } else if (AIType == 3) {
             LogicThree();
         }
 
     }
 
-
+    float dashTime;
+    float lastAdjustTime;
+    Vector2 MoveDirection;
+    Vector2 AdjustDirection;
     void LogicTwo() {
-
-
+        
         if (Random.value >= 0.5) {
             float rotateAng = Random.Range(0, 360);
             transform.DOLocalRotate(new Vector3(0, 0, rotateAng), rotateAng / 360 * 2);
         }
 
         fsm.UpdateJumpCD();
-        Debug.LogError(transform.position);
+        //Debug.LogError(transform.position);
         if (fsm.JumpCD <= 0) {
-            Debug.LogError("Emmmm");
-            GetComponent<DG.Tweening.DOTweenAnimation>().endValueV3 = new Vector3(fsm.JumpSpeed*50, 0f);
-            GetComponent<DG.Tweening.DOTweenAnimation>().isRelative = true;
-            GetComponent<DG.Tweening.DOTweenAnimation>().DOPlayForward();
-            GetComponent<DG.Tweening.DOTweenAnimation>().DOKill();
             fsm.JumpCD = 3.0f;
-
+            dashTime = 1f;
+            float XDiretion = Random.value - 0.5f;
+            float YDiretion = Random.value - 0.5f;
+            MoveDirection = new Vector2(XDiretion, YDiretion).normalized;
         }
-
-
+        
+        if (dashTime > 0f)
+        {
+            if(lastAdjustTime - dashTime > 0.2f)
+            {
+                float XDiretion = Random.value - 0.5f;
+                float YDiretion = Random.value - 0.5f;
+                AdjustDirection = new Vector2(XDiretion, YDiretion).normalized;
+            }
+            this.transform.Translate(10f * dashTime * dashTime * Time.deltaTime * (MoveDirection + AdjustDirection));
+            dashTime -= Time.deltaTime;
+        }
     }
 
     void LogicThree() {
