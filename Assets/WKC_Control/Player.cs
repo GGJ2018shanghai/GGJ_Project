@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void __OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("OnCollisionEnter2D");
         //GameLogicManager._OnCollisionEnter2D = true;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         Debug.Log("OnCollisionStay2D");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collider2D collision)
     {
         collision.GetComponent<MonsterDesc>().GetKilled();
         GameLogicManager.Instance.Encounter(collision.GetComponent<MonsterDesc>());

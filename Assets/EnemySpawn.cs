@@ -70,7 +70,7 @@ public class EnemySpawn : MonoBehaviour {
         height = max.y - min.y;
 
         //////////////////////////////
-        生成怪物(0);
+        生成怪物(3);
         return;
         生成怪物(0, new Vector3(9,8,0) + min);
         设置定时生成怪物(200, 0);
